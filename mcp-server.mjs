@@ -68,7 +68,7 @@ export function buildServer() {
     {
       title: 'Capture Page',
       description:
-        'Use this during frontend development to visually inspect a page, verify UI changes, reproduce interaction states, and capture the rendered result after scripted actions. It opens a page with Playwright, can run actions like click/fill/wait before capture, and returns both an image attachment and structured metadata. Prefer passing the real running app URL when known; only omit `url` when you need to fall back to the default http://localhost:5173.',
+        'Capture and inspect frontend pages visually for debugging. Use this when Codex needs to open a local or remote web page, visually inspect a page, verify UI changes, reproduce interaction states, wait for the UI to settle, take a screenshot, and inspect layout bugs, rendering regressions, missing elements, broken styles, overlap, spacing, blank screens, responsive issues, or other page-level visual problems. It can run Playwright actions like click, fill, press, hover, and wait before capture, and returns both an image attachment and structured metadata. This is especially useful for requests such as 页面截图, 截图看看页面, 看下页面长什么样, 视觉检查, UI 巡检, 前端视觉调试, 布局错位, 样式异常, 页面重叠, 页面空白, 元素消失, 组件没显示, 响应式问题, and 首屏异常. When working on a project, prefer passing the real running app URL when known; only omit `url` when you need to fall back to the default http://localhost:5173.',
       inputSchema: {
         url: z
           .string()
