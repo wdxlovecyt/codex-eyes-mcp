@@ -68,7 +68,7 @@ export function buildServer() {
     {
       title: 'Capture Page',
       description:
-        'Open a page with Playwright, optionally run a sequence of page actions, then take a screenshot and return both metadata and the screenshot image. When working on a project, pass that project\'s actual running URL in `url` whenever it is known. Only omit `url` when the project URL is unavailable and you want to fall back to the default http://localhost:5173.',
+        'Use this during frontend development to visually inspect a page, verify UI changes, reproduce interaction states, and capture the rendered result after scripted actions. It opens a page with Playwright, can run actions like click/fill/wait before capture, and returns both an image attachment and structured metadata. Prefer passing the real running app URL when known; only omit `url` when you need to fall back to the default http://localhost:5173.',
       inputSchema: {
         url: z
           .string()
@@ -80,7 +80,7 @@ export function buildServer() {
         output: z
           .string()
           .optional()
-          .describe('Optional absolute path to save the screenshot. If omitted, the tool only returns image content without writing to disk.'),
+          .describe('Optional absolute filesystem path to save the screenshot. If omitted, the tool only returns image content without writing to disk.'),
         waitFor: z.string().optional().describe('Optional CSS selector to wait for before capture.'),
         browser: z
           .enum(['chromium', 'firefox', 'webkit'])
@@ -104,7 +104,9 @@ export function buildServer() {
         actions: z
           .array(pageActionSchema)
           .optional()
-          .describe('Optional Playwright actions to run before the screenshot, such as click, fill, press, selectOption, hover, waitFor, or wait.')
+          .describe(
+            'Optional Playwright actions to run before the screenshot, such as click, fill, press, selectOption, hover, waitFor, or wait. Prefer precise selectors like `.search-bar input` instead of broad selectors like `input` or `button`.'
+          )
       },
       outputSchema: {
         output: z.string().nullable(),
