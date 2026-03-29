@@ -1,0 +1,33 @@
+{
+  "name": "@huangwu/codex-eyes-mcp",
+  "version": "1.0.2",
+  "description": "A local MCP server that uses Playwright to interact with pages and return screenshots for visual debugging.",
+  "author": "3023514347@qq.com",
+  "type": "module",
+  "bin": "cli.mjs",
+  "files": [
+    "cli.mjs",
+    "mcp-server.mjs",
+    "scripts"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "playwright",
+    "screenshot",
+    "visual-debugging",
+    "codex"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.1",
+    "playwright": "^1.58.2",
+    "zod": "^4.1.11"
+  }
+}
